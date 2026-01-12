@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route } from "react-router-dom";
-import SignUpPage from "@/pages/authorisation/signup.tsx";
-import LoginPage from "@/pages/authorisation/login.tsx";
+import SignUpPage from "@/pages/authorisation/signup-page.tsx";
+import LoginPage from "@/pages/authorisation/login-page.tsx";
 import RootPage from "@/pages/root.tsx";
 
 function App() {
