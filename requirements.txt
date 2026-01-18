@@ -9,3 +9,4 @@ uliweb-alembic
 bcrypt
 pyjwt
 starlette
+python-multipart
