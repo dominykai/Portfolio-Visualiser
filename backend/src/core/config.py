@@ -28,3 +28,5 @@ class Settings(BaseSettings):
             self.POSTGRESQL_PORT,
             self.POSTGRESQL_DATABASE,
         )
+
+    JWT_SECRET_KEY: str
