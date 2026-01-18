@@ -1,2 +1,12 @@
 fastapi
 uvicorn
+sqlalchemy
+pydantic-settings
+pydantic
+python-dotenv
+psycopg2-binary
+uliweb-alembic
+bcrypt
+pyjwt
+starlette
+python-multipart
