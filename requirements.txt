@@ -11,3 +11,4 @@ pyjwt
 starlette
 python-multipart
 alembic
+requests
