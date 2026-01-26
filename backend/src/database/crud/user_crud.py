@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from backend.src.database.models.user_model import User
 from backend.src.schema.models.user_schema import UserCreate
-from backend.src.utils.auth.auth_utils import get_password_hash
+from backend.src.utils.auth_utils import get_password_hash
 
 
 def get_db_user_by_email(db: Session, email: str) -> Optional[User]:

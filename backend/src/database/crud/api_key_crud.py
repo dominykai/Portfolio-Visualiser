@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from backend.src.database.models.api_key_model import ApiKey
 from backend.src.schema.models.api_key_schema import ApiKeyCreate
-from backend.src.utils.auth.auth_utils import encrypt_api_key, decrypt_api_key
+from backend.src.utils.auth_utils import encrypt_api_key, decrypt_api_key
 
 
 def get_db_api_key(db: Session, user_id: int, broker_name: str) -> Optional[ApiKey]:
