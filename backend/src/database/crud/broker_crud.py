@@ -1,4 +1,5 @@
 import csv
+import os
 from typing import Optional
 
 from sqlalchemy.orm import Session
@@ -26,6 +27,9 @@ def preload_db_brokers_table_from_csv(db: Session, filename: str = None):
     """Preload a pre-generated brokers csv file into the database."""
     if filename is None:
         filename = get_file_from_assets("supported_brokers.csv")
+
+    if not os.path.isfile(filename):
+        raise FileNotFoundError("Cannot find file for brokers table feeding:", filename)
 
     with open(filename, "r") as f:
         reader = csv.reader(f)
