@@ -12,3 +12,4 @@ starlette
 python-multipart
 alembic
 requests
+cryptography

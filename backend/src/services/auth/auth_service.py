@@ -14,7 +14,7 @@ from backend.src.database.crud.user_crud import get_db_user_by_email
 from backend.src.database.db import get_db
 from backend.src.database.models.user_model import User
 from backend.src.schema.auth.token_schema import TokenData
-from backend.src.utils.auth.auth_utils import verify_password_hash
+from backend.src.utils.auth_utils import verify_password_hash
 
 JWT_SECRET_KEY = settings.JWT_SECRET_KEY
 JWT_ACCESS_TOKEN_EXPIRY = settings.JWT_ACCESS_TOKEN_EXPIRY

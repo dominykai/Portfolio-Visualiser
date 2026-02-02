@@ -31,3 +31,5 @@ class Settings(BaseSettings):
 
     JWT_SECRET_KEY: str
     JWT_ACCESS_TOKEN_EXPIRY: int
+
+    SYMMETRIC_ENCRYPTION_KEY: str
