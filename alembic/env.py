@@ -12,6 +12,7 @@ from backend.src.database import db
 from backend.src.database.models.user_model import User
 from backend.src.database.models.broker_model import Broker
 from backend.src.database.models.api_key_model import ApiKey
+from backend.src.database.models.portfolio_model import PortfolioCash
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
