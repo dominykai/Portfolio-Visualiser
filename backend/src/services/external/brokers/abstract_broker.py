@@ -1,6 +1,8 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 from requests import get, HTTPError
 from starlette.exceptions import HTTPException
+
+from backend.src.schema.models.portfolio_cash_schema import PortfolioCash
 
 
 class AbstractBroker(ABC):
@@ -12,6 +14,11 @@ class AbstractBroker(ABC):
 
         self.api_key = api_key
         self.private_key = private_key
+
+    @abstractmethod
+    def get_cash_information(self) -> PortfolioCash:
+        """Create a PortfolioCash object given the Broker's external API."""
+        raise NotImplementedError(self.__class__.__name__ + " does not have a get_cash_information method")
 
     def send_request(self, method: str, endpoint: str, params: dict = None) -> dict:
         """Send a request to a given API endpoint.
