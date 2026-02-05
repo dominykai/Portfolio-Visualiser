@@ -1,17 +1,20 @@
-from starlette.exceptions import HTTPException
-
-from backend.src.database.models.portfolio_model import PortfolioCash
+from backend.src.schema.models.portfolio_cash_schema import PortfolioCashBase
 from backend.src.services.external.brokers.abstract_broker import AbstractBroker
 
 
 class Trading212Service(AbstractBroker):
     BASE_URL = "https://live.trading212.com"
 
-    def get_cash_information(self) -> PortfolioCash:
-        portfolio_cash = PortfolioCash()
+    def get_cash_information(self) -> PortfolioCashBase:
+        get_account_summary = self._get_account_summary()
 
-
-        return portfolio_cash_model
+        return PortfolioCashBase(
+            current_value=get_account_summary["investments"]["currentValue"],
+            realised_profit_loss=get_account_summary["investments"]["realizedProfitLoss"],
+            total_cost=get_account_summary["investments"]["totalCost"],
+            unrealised_profit_loss=get_account_summary["investments"]["unrealizedProfitLoss"],
+            total_value=get_account_summary["totalValue"],
+        )
 
     # Accounts
     def _get_account_summary(self) -> dict:
