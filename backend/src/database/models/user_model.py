@@ -14,4 +14,4 @@ class User(Base):
     password: Mapped[str] = mapped_column(String(255), nullable=False)
 
     api_keys: Mapped[List["ApiKey"]] = relationship()
-    portfolio_cash: Mapped["PortfolioCash"] = relationship(back_populates="users")
+    portfolio_cash: Mapped[List["PortfolioCash"]] = relationship(back_populates="user")

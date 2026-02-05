@@ -12,4 +12,4 @@ class Broker(Base):
     name: Mapped[str] = mapped_column(String, primary_key=True)
 
     api_keys: Mapped[List["ApiKey"]] = relationship()
-    portfolio_cash: Mapped[List["PortfolioCash"]] = relationship()
+    portfolio_cash: Mapped[List["PortfolioCash"]] = relationship(back_populates="broker")

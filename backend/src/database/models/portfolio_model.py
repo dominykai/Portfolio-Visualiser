@@ -1,5 +1,5 @@
 from sqlalchemy import ForeignKey, Float
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.src.database.db import Base
 
@@ -15,3 +15,6 @@ class PortfolioCash(Base):
 
     users_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
     brokers_name: Mapped[str] = mapped_column(ForeignKey("brokers.name"), primary_key=True)
+
+    user: Mapped["User"] = relationship(back_populates="portfolio_cash")
+    broker: Mapped["Broker"] = relationship(back_populates="portfolio_cash")
