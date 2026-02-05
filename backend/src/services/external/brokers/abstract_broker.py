@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from requests import get, HTTPError
-from starlette.exceptions import HTTPException
 
-from backend.src.schema.models.portfolio_cash_schema import PortfolioCash
+from backend.src.database.models.portfolio_model import PortfolioCash
+from backend.src.services.external.brokers.external_brokers_exceptions import *
 
 
 class AbstractBroker(ABC):
@@ -38,10 +38,23 @@ class AbstractBroker(ABC):
 
             response.raise_for_status()
 
-        except HTTPError:
-            # Wrap requests.HTTPError to FastAPI.HTTPException
-            raise HTTPException(
-                status_code=response.status_code,
-            )
+        except HTTPError as http_err:
+            match http_err.response.status_code:
+                case 401:
+                    raise BadAPIKeyException()
+                case 403:
+                    raise InsufficientAPIKeyPermissionsException()
+                case 408:
+                    raise TimedOutRequestException()
+                case 429:
+                    raise ResponseRateLimitedException()
+                case _:
+                    raise NotImplementedError(
+                        f"""
+                        Error code status {http_err.response.status_code} not implemented for external broker
+                        {self.__class__.__name__} with response message {http_err.response.text}
+                        """
+                    )
+
 
         return response.json()
