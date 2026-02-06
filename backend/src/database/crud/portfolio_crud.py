@@ -6,7 +6,7 @@ from backend.src.database.models.portfolio_model import PortfolioCash
 from backend.src.schema.models.portfolio_cash_schema import PortfolioCashBase
 
 
-def get_db_portfolio_cash(db: Session, user_id: int, broker_name: str) -> Optional[PortfolioCashBase]:
+def get_db_portfolio_cash(db: Session, user_id: int, broker_name: str) -> Optional[PortfolioCash]:
     """Fetch a portfolio cash record for a given user and broker."""
     return db.query(PortfolioCash).filter_by(users_id=user_id, brokers_name=broker_name).first()
 
@@ -15,7 +15,7 @@ def create_db_portfolio_cash(
         portfolio_cash: PortfolioCashBase,
         user_id: int,
         broker_name: str,
-):
+) -> PortfolioCash:
     """Create a new portfolio cash record for a given user and broker."""
     db_portfolio_cash = PortfolioCash(
         users_id=user_id,
