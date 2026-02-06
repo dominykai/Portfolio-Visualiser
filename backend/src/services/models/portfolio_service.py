@@ -41,4 +41,4 @@ def fetch_portfolio_cash(db: Session, user_id: int, brokers_name: str) -> Portfo
         return db_portfolio_cash
 
     # user's portfolio_cash is outdated and needs to be updated.
-    return update_db_portfolio_cash()
+    return update_db_portfolio_cash(db, user_id, brokers_name)
